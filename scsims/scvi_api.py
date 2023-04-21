@@ -41,12 +41,12 @@ class SIMS:
     def setup_trainer(self, *args, **kwargs):
         print('Setting up trainer ...')
         if 'callbacks' in kwargs:
-            if not any(ModelCheckpoint):
+            if not any(isinstance, ModelCheckpoint):
                 kwargs['callbacks'].append(ModelCheckpoint())
-            if not any(Timer):
-                kwargs['callbacks'].append(Timer())
+            if not any(isinstance, Timer):
+                kwargs['callbacks'].append(ModelCheckpoint())
         else:
-            callbacks = [ModelCheckpoint(), Timer()]
+            callbacks = [ModelCheckpoint(filename='test'), Timer()]
         self._trainer = pl.Trainer(*args, **kwargs, callbacks=callbacks)
 
     def train(self, *args, **kwargs):
